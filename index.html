@@ -7,46 +7,66 @@
 <title>ADCAP App</title>
 
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#003366">
+<meta name="theme-color" content="#0b6b2e">
 
 <style>
-body { margin:0; font-family: Arial; }
-header {
-  background:#003366; color:#fff;
-  padding:10px; text-align:center;
-}
-.login-btn {
-  display:block;
-  margin:10px;
-  padding:12px;
-  background:#ffcc00;
-  color:#000;
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0b6b2e;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
   text-align:center;
-  font-weight:bold;
-  border-radius:8px;
-  text-decoration:none;
 }
-iframe {
-  width:100%;
-  height:calc(100vh - 120px);
-  border:none;
+
+.logo {
+  width:180px;
+  margin-bottom:20px;
+}
+
+.botao {
+  background:#fff;
+  color:#0b6b2e;
+  padding:15px 25px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  margin:15px 0;
+  cursor:pointer;
+}
+
+.info {
+  font-size:14px;
+  max-width:300px;
+  opacity:0.9;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h2>ADCAP Nacional</h2>
-</header>
+<img src="logo.png" class="logo">
+<h2>ADCAP Nacional</h2>
 
-<a class="login-btn" href="https://adcap.org.br/" target="_blank">
-  Área do Associado
-</a>
+<div class="botao" onclick="abrirSite()">
+  ACESSAR SITE
+</div>
 
-<iframe src="https://adcap.org.br/"></iframe>
+<div class="info">
+  📲 Instale este app no seu celular:<br><br>
+  <strong>Android:</strong> menu ⋮ → “Adicionar à tela inicial”<br><br>
+  <strong>iPhone:</strong> botão compartilhar → “Adicionar à Tela de Início"
+</div>
 
 <script>
+function abrirSite() {
+  window.location.href = "https://adcap.org.br/";
+}
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }

@@ -1,17 +1,8 @@
 
-const CACHE_NAME = "adcap-pwa-v1";
-const urlsToCache = ["/", "/index.html"];
-
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
+const CACHE_NAME = "adcap-final-v2";
+self.addEventListener("install", e => {
+  e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(["/","/index.html"])));
 });
-
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
-  );
+self.addEventListener("fetch", e => {
+  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
 });
