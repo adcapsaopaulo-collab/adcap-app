@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "adcap-v2"; // MUDE SEMPRE QUE ATUALIZAR
+const CACHE_NAME = "adcap-v3";
 
 self.addEventListener("install", e => {
   self.skipWaiting();
