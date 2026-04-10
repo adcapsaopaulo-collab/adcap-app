@@ -3,52 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADCAP App</title>
+<title>ADCAP</title>
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0b6b2e">
+
 <style>
 body{
   margin:0;
-  font-family:Arial;
   background:#0b6b2e;
-  color:#fff;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
   height:100vh;
-  text-align:center
+  flex-direction:column;
 }
-.logo{width:180px;margin-bottom:20px}
-.botao{
+
+.logo{
+  width:150px;
+  margin-bottom:20px;
+}
+
+#installBtn{
+  display:none;
   background:#fff;
   color:#0b6b2e;
-  padding:15px 25px;
-  border-radius:12px;
-  font-size:18px;
+  padding:12px 20px;
+  border-radius:10px;
   font-weight:bold;
-  margin:15px 0;
-  cursor:pointer
+  cursor:pointer;
 }
-.info{font-size:14px;max-width:300px;opacity:0.9}
 </style>
 </head>
+
 <body>
 
 <img src="logo.png" class="logo">
-<h2>ADCAP Nacional</h2>
 
-<div class="botao" onclick="window.location.href='https://adcap.org.br/'">
-ACESSAR SITE
-</div>
-
-<div class="info">
-📲 Instale este app:<br><br>
-<strong>Android:</strong> ⋮ → Adicionar à tela inicial<br><br>
-<strong>iPhone:</strong> Compartilhar → Adicionar à Tela de Início
-</div>
+<button id="installBtn">Instalar App</button>
 
 <script>
+let deferredPrompt;
+
+// Captura botão instalar automático
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById("installBtn").style.display = "block";
+});
+
+// Clique no botão instala
+document.getElementById("installBtn").addEventListener("click", async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt = null;
+  }
+});
+
+// REDIRECIONA AUTOMATICAMENTE (sem instrução)
+setTimeout(()=>{
+  window.location.href = "https://adcap.org.br/";
+}, 800);
+
+// service worker
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("sw.js");
 }
