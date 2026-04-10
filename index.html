@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADCAP App</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b6b2e">
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b6b2e;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center
+}
+.logo{width:180px;margin-bottom:20px}
+.botao{
+  background:#fff;
+  color:#0b6b2e;
+  padding:15px 25px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  margin:15px 0;
+  cursor:pointer
+}
+.info{font-size:14px;max-width:300px;opacity:0.9}
+</style>
+</head>
+<body>
+
+<img src="logo.png" class="logo">
+<h2>ADCAP Nacional</h2>
+
+<div class="botao" onclick="window.location.href='https://adcap.org.br/'">
+ACESSAR SITE
+</div>
+
+<div class="info">
+📲 Instale este app:<br><br>
+<strong>Android:</strong> ⋮ → Adicionar à tela inicial<br><br>
+<strong>iPhone:</strong> Compartilhar → Adicionar à Tela de Início
+</div>
+
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+
+</body>
+</html>
